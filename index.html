@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Индивидуальные задания</title>
+    <title>Изменение цвета фона</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        .hidden {
+            display: none;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="button"], input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover, input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портретная фотография</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .portrait {
+            width: 300px; /* Ширина портрета */
+            height: auto; /* Автоматическая высота для сохранения пропорций */
+            border: 2px solid #000; /* Черная рамка вокруг изображения */
+            border-radius: 10px; /* Закругленные углы рамки */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для объема */
+        }
+    </style>
+</head>
+<body background="flag.png">
+    <body>
+        <button id="colorButton">Изменить цвет фона</button>
+    
+        <script>
+            // Получаем элемент кнопки по её ID
+            const button = document.getElementById('colorButton');
+    
+            // Добавляем обработчик события 'click' для кнопки
+            button.addEventListener('click', () => {
+                // Генерация случайного цвета
+                const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                // Изменение цвета фона страницы
+                document.body.style.backgroundColor = randomColor;
+            });
+        </script>
+    <div class="container">
+        <h1>Лабораторная работа 3</h1>
+        <h1>ФотОчка</h1>
+        <img src="miza.jpeg" alt="Портрет" class="portrait">
+    
+        <h2>Информация о пользователе</h2>
+        <p>Имя: Андрей Трегубов</p>
+        <p>Увлечения: Люблю есть и качаца</p>
+        
+        <!-- Индивидуальное задание 1 -->
+        <h2>Нахождение минимума двух чисел</h2>
+        <label>Введите два числа для нахождения минимума:</label>
+        <input type="number" id="num1">
+        <input type="number" id="num2">
+        <input type="button" value="Найти минимум" onclick="findMin()">
+        <p id="minResult"></p>
+
+        
+        <script>
+            let name = "Андрей Трегубов";
+            let admin = name.split(' ')[0];
+            document.write("Admin: " + admin);
+        </script>
+
+         
+
+        <!-- Индивидуальное задание 3 -->
+        <h2>Введите ваш возраст</h2>
+        <input type="button" value="Указать возраст" onclick="askAge()">
+
+        <!-- Индивидуальное задание 4 -->
+        <div id="formContainer">
+            <h2>Анкета</h2>
+            <form id="userForm" onsubmit="return validateForm()">
+                <label for="username">Имя:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="age">Возраст:</label>
+                <input type="number" id="age" name="age" required>
+
+                <label for="gender">Пол:</label>
+                <input type="text" id="gender" name="gender" placeholder="М или Ж" required>
+
+                <input type="submit" value="Заполнить анкету">
+            </form>
+            <div id="surveyComplete" class="hidden">
+                <p>Спасибо за заполнение анкеты!</p>
+                <input type="button" value="Меня возьмут" onclick="applyJob()">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Индивидуальное задание 1
+        function findMin() {
+            let a = document.getElementById('num1').value;
+            let b = document.getElementById('num2').value;
+            let min = Math.min(a, b);
+            document.getElementById('minResult').innerText = "Минимум: " + min;
+        }
+
+        // Индивидуальное задание 3
+        function askAge() {
+            let age;
+            while (true) {
+                age = prompt("Пожалуйста, введите ваш возраст:");
+                if (age !== null && age !== "") {
+                    break;
+                }
+            }
+            alert("Ваш возраст: " + age);
+        }
+
+        // Индивидуальное задание 4 - Анкета
+        function validateForm() {
+            const username = document.getElementById('username').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            
+            if (!username.match(/^[а-яА-Яa-zA-Z]+$/)) {
+                alert("Имя должно содержать только буквы.");
+                return false;
+            }
+            if (isNaN(age) || age <= 0) {
+                alert("Возраст должен быть положительным целым числом.");
+                return false;
+            }
+            if (!["М", "Ж"].includes(gender.toUpperCase())) {
+                alert("Пол должен быть 'М' или 'Ж'.");
+                return false;
+            }
+           
+
+            document.getElementById('userForm').classList.add('hidden');
+            document.getElementById('surveyComplete').classList.remove('hidden');
+            return false;
+        }
+
+        function applyJob() {
+            alert("Вы успешно подали заявку!");
+            // Здесь можно добавить действия для отправки заявки или другой логики
+        }
+    </script>
+</body>
+</html>
